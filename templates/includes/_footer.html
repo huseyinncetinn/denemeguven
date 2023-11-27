@@ -1,0 +1,29 @@
+{% load static %}
+{% load i18n %}
+
+
+<footer>
+        <div class="footer">
+            <div class="row1">
+            <a href="https://www.facebook.com/guvensandoor/" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/guvensankapi/" target="_blank" ><i class="fa fa-instagram"></i></a>
+            </div>
+
+            <div class="row1">
+                <ul>
+                  {% for kategori in kategoriler %}
+                    <li><a href="{% url 'kategori' kategori.slug %}"> {{ kategori.isim }} </a></li>
+                  {% endfor %}
+                </ul>
+            </div>
+
+            <div class="row1">
+                Yavuz Selim Mh. İpekyolu Cd.No:51 Organize Sanayi Bölgesi TOSYA/KASTAMONU <br>
+                <i class="fa-solid fa-phone"></i> 0 (366) 313 12 50 <i class="fa-solid fa-phone"></i> 0366 313 71 71
+            </div>
+
+            <div class="row1">
+                    <a href=""><img src="{% static 'image/kent.png' %}" alt=""><strong>KENT REKLAM</strong> </a> - Her hakkı saklıdır.
+            </div>
+</div>
+</footer>

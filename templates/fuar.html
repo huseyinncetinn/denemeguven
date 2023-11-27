@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% load static %}
+{% load i18n %}
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+
+        <h3 class="text-center mt-3"> {% trans 'Katıldığımız fuarlardan' %} </h3>
+
+
+    <div class="gallery">
+
+        {% for resim in resimler %}
+                <a href="{{ resim.image.url }}" data-lightbox="resimler" data-title="Fabrika" data-no-resize="true">
+                    <img src="{{ resim.image.url }}" alt="">
+                </a>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% load static %}
+{% load i18n %}
+
+
+
+
+{% block content %}
+<style>
+.footer{
+    margin-top: 150px;
+}
+</style>
+
+<div class="container hakkimizda mt-5">
+    <h2 class="text-center">{% trans 'Hakkımızda' %}</h2>
+    <p>{% blocktrans %}1994 yılından günümüze kapı sektörüne yön veren firmamız uzman kadrosu ve son sistem makine parkuru ile 22.000 alanda 6500 metrekare kapal alandaki yeni tesisinde siz müşterilerimize hizmet vermeye devam etmektedir.{% endblocktrans %}
+       
+       {% blocktrans %}Üretim yapmakta olduğumuz kapılarda 1.sınıf malzeme kullanılmaktadır.{% endblocktrans %}
+
+
+        {% blocktrans %}Yüksek imalat kapasitemizle  verilen siparişleri en kısa sürede teslim etmekteyiz.{% endblocktrans %}
+        
+        {% blocktrans %}Firma olarak AR GE çalışmalarını ve teknolojik gelişmeleri yakından takip ederek
+        Siz değerli müşterilerimize en iyiyi sunmaya devam edeceğiz.{% endblocktrans %}
+        
+       {% blocktrans %} GÜVENSAN KAPI İLE DOĞAYI GÜVENLE YAŞAYIN… {% endblocktrans %}</p>
+    <b>{% trans 'Misyonumuz' %}</b>
+    <p>{% blocktrans %}Bizimle çalışan veya çalışmak arzusunda olan tüm müşterilerimize en iyi kalite ürünleri
+        sunmak ve hizmeti üst seviyeye çıkarmak.{% endblocktrans %}</p>
+    <b>{% trans 'Vizyonumuz' %}</b>
+    <p>{% blocktrans %}İnsan sağlığının öneminin bilinci, kalitemiz ve bilgi birikimimiz ile sektöre yön veren
+        Firma olma bilinciyle daima gelişiriz.{% endblocktrans %}</p>
+</div>
+
+
+{% endblock content %}

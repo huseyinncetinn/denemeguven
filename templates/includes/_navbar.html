@@ -1,0 +1,100 @@
+
+{% load static %}
+{% load i18n %}
+
+<nav class="nav" id="navbar">
+      <i class="fa-solid fa-bars navOpenBtn"></i>
+      {% comment %} <i class="uil uil-bars navOpenBtn"></i> {% endcomment %}
+          <div class="logo-div">
+              <a href="{% url 'index' %}">
+                <img width="200px" src="{% static 'image/logo1.png' %}" alt="">
+              </a>
+          </div>
+            
+      <div class="nav-link">
+        <i class="fa-solid fa-xmark navCloseBtn"></i>
+        {% comment %} <i class="uil uil-times navCloseBtn"></i> {% endcomment %}
+        <li><a href="{% url 'hakkimizda' %}">{% trans 'Hakkımızda' %}</a></li>
+        <li class="dropdown">
+              <a href="#">{% trans 'Ürünlerimiz' %}</a>
+              <ul class="dropdown-content">
+                  {% for kategori in kategoriler %}
+                    <li><a href="{% url 'kategori' kategori.slug %}"> {{ kategori.isim }} </a></li>
+                  {% endfor %}
+              </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">{% trans 'Galeri' %}</a>
+          <ul class="dropdown-content">
+            <li><a href="{% url 'fabrikadan' %}">{% trans 'Fabrikamızdan' %}</a></li>
+            <li><a href="{% url 'fuarlardan' %}">{% trans 'Fuarlardan' %}</a></li>
+
+          </ul>
+        </li>
+        <li class="accordion-display" >
+          <div style="background-color: #555b5e;" class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button style="background-color: #555b5e; color: #fff;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <h6 style="color: #fff;">{% trans 'Ürünlerimiz' %}</h6>
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div style="background-color: #555b5e;" class="accordion-body">  
+                          
+
+                  {% for kategori in kategoriler %}
+                       <a href="{% url 'kategori' kategori.slug %}"> {{ kategori.isim }} </a>
+                  {% endfor %}
+                                                            
+
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingTwo">
+                <button style="background-color: #555b5e;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    <h6 style="color: #fff;">{% trans 'Galeri' %}</h6>
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div style="background-color: #555b5e;" class="accordion-body">
+    
+                    <a href="{% url 'fabrikadan' %}">{% trans 'Fabrikamızdan' %}</a>
+                    <a href="{% url 'fuarlardan' %}">{% trans 'Fuarlardan' %}</a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="{% url 'iletisim' %}">{% trans 'İletişim' %}</a></li>
+        <li><a href="https://drive.google.com/file/d/13LlxMMnPjRnSD9cj3bbXhW_-Uskmdbt8/view?usp=sharing" target="_blank">{% trans 'E-Katalog' %}</a></li>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% for lang_code, lang_name in LANGUAGES %}
+            <li class="lang-options">
+                <a href="/{{ lang_code }}/{{link}}"> 
+                    {% if lang_code == 'en' %}
+                        EN
+                    {% elif lang_code == 'tr' %}
+                        TR
+                    {% else %}
+                        {{ lang_name }}
+                    {% endif %}
+                </a>
+            </li>  
+        {% endfor %}
+        
+      </div>
+      <i class="fa-solid fa-magnifying-glass search-icon" id="searchIcon"></i>
+      {% comment %} <i class="uil uil-search search-icon" id="searchIcon"></i> {% endcomment %}
+      <div class="search-box">
+        <i class="uil uil-search search-icon"></i>
+        <form class="search-form" action="{% url 'search' %}" method="GET">
+          <input type="text" name="searched" value="{{searched}}" placeholder="Kategori ya da ürün kodu giriniz" />
+        </form>
+      </div>
+</nav>
+
+

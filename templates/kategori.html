@@ -1,0 +1,89 @@
+{% extends "main.html" %}
+{% load static %}
+{% load i18n %}
+
+
+
+{% block content %}
+
+<div class="kategori-ust-img">
+     <img class="kategori-img"  src="{{ kategori.backImage.url }}" alt="">
+     {% comment %} <div class="text-overlay">KATEGORİ ADI</div> {% endcomment %}
+</div>
+
+<div class="text-center mt-3">
+     <img src="{% static 'image/logo2.png' %}" alt="" width="15%">
+</div>
+
+
+<h2 class="text-center mt-5 mb-3"> {{ kategori.isim }} </h2>
+<h6 class="text-center"> {% trans 'Toplam ürün' %}  : {{ urunler.all.count }}</h6>
+
+<div class="container">
+     <div class="row row-cols-2 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+        {% for urun in page.object_list  %}
+        <div class="col kategori-col ">
+               <div class="shell">
+                    <div class="wsk-cp-product">
+                            <div class="wsk-cp-img">
+                              <img src="{{ urun.urunResim.url }}" alt="Product" class="img-responsive" />
+                            </div>
+                            <div class="wsk-cp-text">
+                                             <div class="category">
+                                                  <a class="text-white" href="{% url 'urundetay' urun.slug %}">{% trans 'Ürün Detay' %}</a>
+                                             </div>
+                                             <div class="title-product">
+                                             <h3> {{ urun.urunKodu }} </h3>
+                                   </div>
+                            </div>
+                    </div>
+               </div>
+          </div>
+        {% endfor %}
+          
+      </div>
+</div>
+
+{% if urunler.all.count > 12 %}
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-md-4 col-sm-5 m-auto">
+                    <p>{{ page.number }} / {{ page.paginator.num_pages }}</p>
+                    <nav  aria-label="...">
+                        <ul  class="pagination">
+                        <li  class="page-item">
+                            {% if page.has_previous  %}
+                            <a class="page-link" href="{% url 'kategori' kategori.slug %}?page={{ page.previous_page_number }}" tabindex="-1">Previous</a>
+                            {% else %}
+                            {% endif %}
+                        </li>
+                        {% for num_page in page.paginator.page_range %}
+                                    {% if page.number == num_page %}
+                                        <li class="page-item active">
+                                            <a class="page-link" href="{% url 'kategori' kategori.slug %}?page={{ num_page }}">{{ num_page }}<span class="sr-only">(current)</span></a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{% url 'kategori' kategori.slug %}?page={{ num_page }}">{{ num_page }}<span class="sr-only">(current)</span></a>
+                                        </li>
+                                    
+                                    {% endif %}
+
+                                
+                        {% endfor %}
+                        <li class="page-item">
+                        {% if page.has_next %}
+                            <a class="page-link" href="{% url 'kategori' kategori.slug %}?page={{ page.next_page_number }}">Next</a>
+                        {% else %}
+                        {% endif %}
+                        </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+{% else %}
+{% endif %}
+
+
+{% endblock content %}

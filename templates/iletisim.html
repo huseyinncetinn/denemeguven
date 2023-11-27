@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% load static %}
+{% load i18n %}
+
+
+
+
+{% block content %}
+
+
+<div class="container iletisim-div text-center mt-5">
+    <h2>{% trans 'Fabrikamız ve Şubelerimiz' %}</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12039.695019978984!2d34.0277659!3d41.026924!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x408412e682f42691%3A0xd408302ef3254325!2zR8O8dmVuc2FuIE9ybWFuIMOccsO8bmxlcmk!5e0!3m2!1str!2str!4v1700128622758!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
+    <p><b>{% trans 'Fabrika' %} :</b>Tosya OSB Yavuz Selim MahallesiMerkez Sk. No:91 / 1  Tosya / KASTAMONU <br>
+        <b>{% trans 'Tel' %}:</b> 0366 313 12 50 <b>Fax:</b> 0366 313 71 71</p>
+
+    <p><b>{% trans 'Şube1' %} :</b>Karşıyaka Mahallesi İlkadım BulvarıNo: 91/1 Canik / SAMSUN <br>
+        <b>{% trans 'Tel' %}:</b> 0362 238 55 37 <b>GSM:</b> 0532 634 48 21</p>
+
+    <p><b>{% trans 'Şube2' %} :</b>Altın Şehir Mahallesi Nato Yolu Cad.No:118 Ümraniye / İSTANBUL <br>
+        <b>GSM:</b> 0552 555 12 50</p>
+</div>
+
+
+{% endblock content %}

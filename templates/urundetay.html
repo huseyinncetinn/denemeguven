@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+{% load static %}
+{% load i18n %}
+
+
+
+
+{% block content %}
+<div class="text-center mt-3">
+    <img src="{% static 'image/logo2.png' %}" alt="" width="15%">
+</div>
+
+
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
+
+
+<div class="container urundetay-div mt-5 mb-3">
+     <div class="urun-image-div">
+          <img id="myImg" src="{{ urun.urunResim.url }}" title="{% trans 'Resmi büyütmek için tılayınız' %}" width="100%">
+     </div>
+     <div class="urun-icerik">
+           <h4> {{ urun.urunKodu }} </h4>
+           <h5> {{ urun.urunKategori }} </h5>
+           <p><b>{% trans 'KANAT' %}:</b> {{ urun.kanat }} </p>
+
+
+            <p><b>{% trans 'KASA' %}:</b> {{ urun.kasa }} </p>
+
+
+            <p><b>{% trans 'PERVAZ' %}:</b> {{ urun.pervaz }} </p>
+
+            {% if urun.cila %}
+            <p><b>{% trans 'CİLA' %}:</b> {{ urun.cila }} </p>
+            {% else %}
+            {% endif %}
+
+            {% if urun.boya %}
+            <p><b>{% trans 'BOYA' %}:</b> {{ urun.boya }} </p>
+            {% else %}
+            {% endif %}
+
+            
+     </div>
+
+</div>
+
+
+{% endblock content %}
